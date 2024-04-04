@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -51,4 +53,8 @@ dependencies {
     api(libs.androidx.navigation.fragment)
     api(libs.androidx.navigation.ui)
     api(libs.androidx.navigation.dynamic)
+
+    implementation(libs.hilt.android)
+    ksp(libs.androidx.hilt.compiler)
+    ksp(libs.hilt.android.compiler)
 }
