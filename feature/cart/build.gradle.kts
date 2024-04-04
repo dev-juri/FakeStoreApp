@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidDynamicFeature)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
 }
 android {
     namespace = "com.juri.cart"
@@ -40,4 +42,8 @@ dependencies {
 
     implementation(libs.androidx.constraintlayout)
     implementation(libs.material)
+
+    implementation(libs.hilt.android)
+    ksp(libs.androidx.hilt.compiler)
+    ksp(libs.hilt.android.compiler)
 }

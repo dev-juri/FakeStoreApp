@@ -48,11 +48,12 @@ dependencies {
     ksp(libs.hilt.android.compiler)
 
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
-    
+
     implementation(libs.retrofit)
     implementation(libs.retrofit2.kotlin.coroutines.adapter)
     implementation(libs.converter.moshi)
