@@ -40,6 +40,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -54,7 +56,12 @@ dependencies {
     api(libs.androidx.navigation.ui)
     api(libs.androidx.navigation.dynamic)
 
+    // Hilt
     implementation(libs.hilt.android)
     ksp(libs.androidx.hilt.compiler)
     ksp(libs.hilt.android.compiler)
+
+    // Add Dagger dependencies
+    api("com.google.dagger:dagger:2.44.2")
+    api("com.google.dagger:dagger-android:2.44.2")
 }
