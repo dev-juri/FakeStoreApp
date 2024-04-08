@@ -1,6 +1,7 @@
 package com.juri.core.repositories
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.juri.core.local.StoreDao
 import com.juri.core.local.entities.DbProduct
 import com.juri.core.remote.StoreClient
@@ -14,6 +15,8 @@ interface StoreRepository {
     suspend fun fetchRemoteProducts(): NetworkResult<Boolean>
 
     fun getSavedProducts() : LiveData<List<DbProduct>>
+
+    fun getTest(): MutableLiveData<String>
 
 }
 
@@ -37,6 +40,10 @@ class StoreRepositoryImpl @Inject constructor(
 
     override fun getSavedProducts(): LiveData<List<DbProduct>> {
         return storeDao.getProducts()
+    }
+
+    override fun getTest(): MutableLiveData<String> {
+        return MutableLiveData("aede")
     }
 
 }
