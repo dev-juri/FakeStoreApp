@@ -1,7 +1,7 @@
 [versions]
 agp = "8.3.1"
 coroutines = "1.7.1"
-hiltVersion = "2.44.2"
+hiltVersion = "2.49"
 hiltCompilerVersion = "1.2.0"
 kotlin = "1.9.22"
 ksp_version = "1.9.22-1.0.16"

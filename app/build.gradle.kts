@@ -62,6 +62,6 @@ dependencies {
     ksp(libs.hilt.android.compiler)
 
     // Add Dagger dependencies
-    api("com.google.dagger:dagger:2.44.2")
-    api("com.google.dagger:dagger-android:2.44.2")
+    api("com.google.dagger:dagger:2.49")
+    api("com.google.dagger:dagger-android:2.49")
 }
