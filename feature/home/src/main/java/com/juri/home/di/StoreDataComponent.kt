@@ -1,7 +1,6 @@
 package com.juri.home.di
 
 import android.content.Context
-import androidx.fragment.app.Fragment
 import com.juri.core.di.CoreComponent
 import com.juri.home.presentation.HomeFragment
 import dagger.BindsInstance
