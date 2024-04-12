@@ -7,7 +7,9 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.hilt.android.EntryPointAccessors
 
-@Component(dependencies = [CoreComponent::class])
+@Component(
+    dependencies = [CoreComponent::class]
+)
 interface StoreDataComponent {
 
     fun inject(homeFragment: HomeFragment)

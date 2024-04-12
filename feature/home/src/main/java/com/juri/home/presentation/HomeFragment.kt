@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.juri.home.adapter.StoreAdapter
 import com.juri.home.databinding.FragmentHomeBinding
 import com.juri.home.di.inject
@@ -16,8 +17,9 @@ import com.juri.home.viewModel.NetworkState
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel: HomeViewModel by viewModels()
     private lateinit var adapter: StoreAdapter
+
+    private val viewModel by viewModels<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

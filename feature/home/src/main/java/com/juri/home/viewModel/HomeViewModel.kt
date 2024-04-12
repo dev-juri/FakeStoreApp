@@ -10,9 +10,7 @@ import com.juri.home.util.fromDbModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
-    @Inject
-    lateinit var storeRepo: StoreRepository
+class HomeViewModel @Inject constructor(private val storeRepo: StoreRepository) : ViewModel() {
 
     val products = storeRepo.getSavedProducts().map {
         it.fromDbModel()

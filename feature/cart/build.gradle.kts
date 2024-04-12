@@ -30,6 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
 }
 
 dependencies {
@@ -46,4 +47,5 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.androidx.hilt.compiler)
     ksp(libs.hilt.android.compiler)
+
 }
