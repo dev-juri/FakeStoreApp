@@ -4,20 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.juri.core.repositories.StoreRepository
-import com.juri.home.R
+import androidx.fragment.app.viewModels
+import com.juri.home.adapter.StoreAdapter
+import com.juri.home.databinding.FragmentHomeBinding
 import com.juri.home.di.inject
-import kotlinx.coroutines.runBlocking
-import javax.inject.Inject
+import com.juri.home.viewModel.HomeViewModel
+import com.juri.home.viewModel.NetworkState
 
 
 class HomeFragment : Fragment() {
 
-    @Inject
-    lateinit var storeRepo: StoreRepository
-
+    private lateinit var binding: FragmentHomeBinding
+    private val viewModel: HomeViewModel by viewModels()
+    private lateinit var adapter: StoreAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,19 +27,30 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        runBlocking {
-            storeRepo.fetchRemoteProducts()
+        adapter = StoreAdapter()
+        binding.productsRecycler.adapter = adapter
 
-            storeRepo.getSavedProducts().observe(viewLifecycleOwner) {
-                Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_LONG).show()
+        viewModel.products.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                adapter.submitList(it.toList())
+            }
+        }
+
+        viewModel.status.observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it) {
+                    NetworkState.SUCCESS -> {}
+                    NetworkState.ERROR -> {}
+                    else -> {}
+                }
             }
         }
     }

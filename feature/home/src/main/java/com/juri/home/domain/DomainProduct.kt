@@ -1,4 +1,4 @@
-package com.juri.core.domain
+package com.juri.home.domain
 
 data class DomainProduct(
     val category: String,
